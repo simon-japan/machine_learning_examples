@@ -45,7 +45,7 @@ class KNN(object):
             # print "votes:", votes, "true:", Ytest[i]
             max_votes = 0
             max_votes_class = -1
-            for v,count in votes.iteritems():
+            for v,count in votes.items():
                 if count > max_votes:
                     max_votes = count
                     max_votes_class = v
@@ -62,16 +62,16 @@ if __name__ == '__main__':
     Ntrain = 1000
     Xtrain, Ytrain = X[:Ntrain], Y[:Ntrain]
     Xtest, Ytest = X[Ntrain:], Y[Ntrain:]
-    for k in (1,2,3,4,5):
+    for k in (1, 2, 3, 4, 5):
         knn = KNN(k)
         t0 = datetime.now()
         knn.fit(Xtrain, Ytrain)
-        print "Training time:", (datetime.now() - t0)
+        print("Training time:", (datetime.now() - t0))
 
         t0 = datetime.now()
-        print "Train accuracy:", knn.score(Xtrain, Ytrain)
-        print "Time to compute train accuracy:", (datetime.now() - t0), "Train size:", len(Ytrain)
+        print("Train accuracy:", knn.score(Xtrain, Ytrain))
+        print("Time to compute train accuracy:", (datetime.now() - t0), "Train size:", len(Ytrain))
 
         t0 = datetime.now()
-        print "Test accuracy:", knn.score(Xtest, Ytest)
-        print "Time to compute test accuracy:", (datetime.now() - t0), "Test size:", len(Ytest)
+        print("Test accuracy:", knn.score(Xtest, Ytest))
+        print("Time to compute test accuracy:", (datetime.now() - t0), "Test size:", len(Ytest))
